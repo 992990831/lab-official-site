@@ -3078,7 +3078,7 @@ table.jobs td a,table.launches td a,table.regular td a {
 
 #logo {
     position: absolute;
-    top: 32px;
+    top: 28px;
     left: 50px;
     width: 210px;
     height: auto
@@ -3086,7 +3086,7 @@ table.jobs td a,table.launches td a,table.regular td a {
 
 #logo img,#logo svg {
     display: block;
-    width: 100%;
+    width: 130%;
     height: auto
 }
 
@@ -5403,7 +5403,7 @@ h4 {
 .top-banner {
     margin-top: -20px;
     height: 100vh;
-    background-image: url("../images/artificial-intelligence-deep-learning-neural-networks-ai-1.jpg");
+    background-image: url("../images/artificial-intelligence-deep-learning-neural-networks-ai-1-removebg.png");
     background-position: bottom;
     background-size: cover;
 }
