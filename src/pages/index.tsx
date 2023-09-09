@@ -1,10 +1,12 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import { StaticImage } from 'gatsby-plugin-image'
-import './bootstrap.css';
-import './header.css';
-import './heartbeat.css';
-import './scrolldown.css';
+import Header from "../components/header";
+
+import './assets/css/bootstrap.css';
+import './assets/css/header.css';
+import './assets/css/heartbeat.css';
+import './assets/css/scrolldown.css';
+import './assets/css/burger-menu.css';
 
 const IndexPage: React.FC<PageProps> = () => {
   const heartBeat = React.useRef<SVGSVGElement>(null);
@@ -52,68 +54,42 @@ const IndexPage: React.FC<PageProps> = () => {
     }, 5);
   };
 
-  React.useEffect(()=>{
-    // while(heartBeatLength > 0)
-    // {
-    //   setheartBeatLength(heartBeatLength-5);
-    //   setInterval(()=>{heartBeat.current?.setAttribute("viewBox", `0 0 ${heartBeatLength} 20`)}, 100);
-    // }
-    //setRandowmHeartBeat();
-    if(showLength >= 0)
-    {
-      if(!isRunning)
-      {
-        setRandowmHeartBeat();
-        setIsRunning(!isRunning);
-      }
+  // React.useEffect(()=>{
+  //   if(showLength >= 0)
+  //   {
+  //     if(!isRunning)
+  //     {
+  //       setRandowmHeartBeat();
+  //       setIsRunning(!isRunning);
+  //     }
       
-      showHeartBeatFun();
-    }
-    else if(hideLength < 154)
-    {
-      hideHeartBeatFun();
-    }
-    else {
-      setTimeout(()=>{
-        setRandowmHeartBeat();
-        setIsRunning(false);
+  //     showHeartBeatFun();
+  //   }
+  //   else if(hideLength < 154)
+  //   {
+  //     hideHeartBeatFun();
+  //   }
+  //   else {
+  //     setTimeout(()=>{
+  //       setRandowmHeartBeat();
+  //       setIsRunning(false);
 
-        initHeartBeat();
-      }, 1000);
-    }
+  //       initHeartBeat();
+  //     }, 1000);
+  //   }
+  // }, [showLength, hideLength]);
 
-    // if(heartBeatLength < 155)
-    // {
-    //   hideHeartBeatFun();
-    // }
-    
-  }, [showLength, hideLength]);
+  const onMenuClick = (event: any) => {
+    event.preventDefault();
+  }
 
   return (
     <>
-      <div id="header" role="navigation" className="section" data-limit=".15">
-        <div className="header-bg"></div>
-        <div className="header-inner">
-        
-          <a href="/" id="logo" aria-label="Link to go to the homepage">            
-            <StaticImage style={{ display: "contents" }}
-                alt="logo"
-                src={`../images/169383800965542.png`}
-              />
-          </a>
-          <div id="navigation">
-            <ul className="nav-links">
-              <li className="nav-item"><a href="/vehicles/falcon-9/" aria-label="Learn about the Falcon 9 vehicle">solution</a></li>
-              <li className="nav-item"><a href="/vehicles/falcon-heavy/" aria-label="Learn about the Falcon Heavy vehicle">technology</a></li>
-              <li className="nav-item"><a href="/vehicles/dragon/" aria-label="Learn about the Dragon vehicle">case</a></li>
-              <li className="nav-item"><a href="/vehicles/starship/" aria-label="Learn about the Starship vehicle">about</a></li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
+      <Header></Header>
       <div className="top-banner">
-        <div className="heart-rate" ref={heartBeatContainer}>
+      <p className="slogan">借助AI之力</p>
+      <p className="slogan">探索大脑的秘密</p>
+        {/* <div className="heart-rate" ref={heartBeatContainer}>
           <svg ref={heartBeat} style={{marginTop:`${randomTop}vh`, marginLeft: "150px"}} x="0px" y="0px" width="150px" height="73px" viewBox="150 0 150 73" enable-background="new 0 0 150 73">
             <defs>
               <filter id="dropGlow" width="1.5" height="1.5" x="-.25" y="-.25">
@@ -129,13 +105,11 @@ const IndexPage: React.FC<PageProps> = () => {
             <polyline fill="none" stroke="#FBFEFE" stroke-width="2" style={{filter:"url(#dropGlow)"}} points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,30 80.067,53.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
             />
           </svg>
-          {/* <div className="fade-in"></div>
-          <div className="fade-out"></div> */}
-        </div>
+        </div> */}
       </div>
-      <a id="banner-scroll-down" className="scroll-down" title="scroll down to first section" aria-label="scroll down to first section" data-module-dynamic="scroll-to" href="#section-d9949bb5-56a2-4cc1-87c9-014e3add43d3">
+      {/* <a id="banner-scroll-down" className="scroll-down" title="scroll down to first section" aria-label="scroll down to first section" data-module-dynamic="scroll-to" href="#section-d9949bb5-56a2-4cc1-87c9-014e3add43d3">
         
-      </a>
+      </a> */}
 
     </>
   )

@@ -7,6 +7,11 @@
   Gatsby Minimal TypeScript Starter
 </h1>
 
+1. **Burger Menu**
+https://github.com/negomi/react-burger-menu#styling
+https://www.npmjs.com/package/react-burger-menu
+
+
 ## 🚀 Quick start
 
 1.  **Create a Gatsby site.**
