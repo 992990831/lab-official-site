@@ -1,0 +1,107 @@
+.home_star_sky {
+    background-image: url("../../../images/home/star_sky_bg.webp");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+}
+
+.home_moon {
+    background-image: url("../../../images/home/moon.png");
+    background-size: cover;
+    height: 30vh;
+    width: 30vh;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 55vh;
+    left: -5vw; 
+    /* position: fixed;
+    top: 55vh;
+    left: -5vw; */
+    transform: rotate(-10deg);
+    /* animation-name:moon_move;
+    animation-duration:2s;
+    animation-delay: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    -webkit-animation--name:moon_move;
+    -webkit-animation--duration:2s;
+    -webkit-animation--delay: 2s;
+    -webkit-animation--timing-function: ease;
+    -webkit-animation-iteration-count: infinite; */
+}
+
+.home_sand_sea {
+    background-image: url("../../../images/home/sand_sea.webp");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: 0 25vh;
+    /* position: fixed;
+    bottom: 0;*/
+
+    position: absolute;
+    top:0vh; 
+}
+
+@keyframes moon_move
+{
+    from {transform: rotate(-10deg);}
+    to {transform: rotate(90deg);}
+    from {top: 155vh;}
+    to {top: 115vh;}
+    from {left: -5vw;}
+    to {left: 20vw;}
+}
+
+@-webkit-keyframes moon_move /*Safari and Chrome*/
+{
+    from {transform: rotate(-10deg);}
+    to {transform: rotate(90deg);}
+    from {top: 155vh;}
+    to {top: 115vh;}
+    from {left: -5vw;}
+    to {left: 20vw;}
+}
+
+.slogan-moon {
+    top: 55%;
+    opacity: 0;
+    position: relative;
+    font-size: 1.5rem;
+    text-align: center;
+    /* animation-name:slogan_move;
+    animation-duration:2s;
+    animation-delay: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    -webkit-animation--name:slogan_move;
+    -webkit-animation--duration:2s;
+    -webkit-animation--delay: 2s;
+    -webkit-animation--timing-function: ease;
+    -webkit-animation-iteration-count: infinite; */
+}
+
+@keyframes slogan_move
+{
+    from {top:50%;}
+    to {top:45%;}
+    from {opacity: 0.2;}
+    to {opacity: 1;}
+}
+
+@-webkit-keyframes slogan_move /*Safari and Chrome*/
+{
+    from {top:50%;}
+    to {top:45%;}
+    from {opacity: 0.3;}
+    to {opacity: 1;}
+}
+
+#moon_page {
+    position: relative;
+    height: 200vh;
+    width: 100vw;
+}

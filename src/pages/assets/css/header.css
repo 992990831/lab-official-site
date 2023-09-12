@@ -3180,7 +3180,7 @@ body.isDesktop #menu-navigation a:hover {
 }
 
 #header {
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100vw;
     height: 100px
