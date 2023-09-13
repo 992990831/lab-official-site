@@ -113,8 +113,8 @@ const IndexPage: React.FC<PageProps> = () => {
 
       //经过100vh的高度，top从55vh变为15vh
       moon?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 40}vh`);
-      //left从-5vw变为25vw
-      moon?.style.setProperty("left", `${-5 + ((scrollTop-window.innerHeight)/window.innerHeight) * 30}vw`);
+      //left从-5vw变为55vw
+      moon?.style.setProperty("left", `${-5 + ((scrollTop-window.innerHeight)/window.innerHeight) * 60}vw`);
       //旋转角度从-10deg变为90deg
       moon?.style.setProperty("transform", `rotate(${-10 + ((scrollTop-window.innerHeight)/window.innerHeight) * 100}deg)`);
 
@@ -169,7 +169,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
         </div>
         <div id="home_sand_sea" className="home_sand_sea">
-            <p id="company_slogan" className="slogan-moon">我们的征途是星星和大海</p>
+            <p id="company_slogan" className="slogan-moon">我们的征途，是星辰大海</p>
         </div>
       </div>
       
