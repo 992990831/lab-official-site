@@ -9,6 +9,8 @@ import './assets/css/scrolldown.css';
 import './assets/css/burger-menu.css';
 import './assets/css/home.css';
 
+const mobileScreenWidth = 768;
+
 const IndexPage: React.FC<PageProps> = () => {
   const heartBeat = React.useRef<SVGSVGElement>(null);
   const heartBeatContainer = React.useRef<HTMLDivElement>(null);
@@ -107,18 +109,36 @@ const IndexPage: React.FC<PageProps> = () => {
 
     console.log(scrollTop, top, height);
     if (scrollTop > window.innerHeight && scrollTop < window.innerHeight * 2) {
-      console.log("fixed");
-
+     
       sky?.style.setProperty("position", "fixed");
       moon?.style.setProperty("position", "fixed");
       jupiter?.style.setProperty("position", "fixed");
 
-      //经过100vh的高度，top从55vh变为15vh
-      moon?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 40}vh`);
-      //left从-5vw变为55vw
-      moon?.style.setProperty("left", `${-5 + ((scrollTop-window.innerHeight)/window.innerHeight) * 60}vw`);
-      //旋转角度从-10deg变为90deg
-      moon?.style.setProperty("transform", `rotate(${-10 + ((scrollTop-window.innerHeight)/window.innerHeight) * 100}deg)`);
+      if(window.innerWidth < mobileScreenWidth) //手机模式
+      {
+        //经过100vh的高度，top从55vh变为15vh
+        moon?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 40}vh`);
+        //left从-5vw变为55vw
+        moon?.style.setProperty("left", `${-5 + ((scrollTop-window.innerHeight)/window.innerHeight) * 60}vw`);
+        //旋转角度从-10deg变为90deg
+        moon?.style.setProperty("transform", `rotate(${-10 + ((scrollTop-window.innerHeight)/window.innerHeight) * 100}deg)`);
+      } 
+      else { //pc模式
+        //经过100vh的高度，top从55vh变为15vh
+        moon?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 40}vh`);
+        //left从-5vw变为25vw
+        moon?.style.setProperty("left", `${-5 + ((scrollTop-window.innerHeight)/window.innerHeight) * 30}vw`);
+        //旋转角度从-10deg变为90deg
+        moon?.style.setProperty("transform", `rotate(${-10 + ((scrollTop-window.innerHeight)/window.innerHeight) * 100}deg)`);
+        
+        //经过100vh的高度，top从65vh变为35vh
+        jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
+        //right从5vw变为15vw
+        jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
+        //旋转角度从90deg变为180deg
+        jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
+      }
+      
 
       
       sea?.style.setProperty("position", "fixed");
@@ -129,27 +149,48 @@ const IndexPage: React.FC<PageProps> = () => {
       slogan?.style.setProperty("opacity", `${0 + ((scrollTop-window.innerHeight)/window.innerHeight) * 1}`);
     }
     else if(scrollTop > window.innerHeight * 2) {
-      //经过100vh的高度，top从15vh变为5vh
-      moon?.style.setProperty("top", `${15 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
-      //left从55vw变为5vw
-      moon?.style.setProperty("left", `${55 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 50}vw`);
-      //旋转角度从90deg变为180deg
-      moon?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
+      if(window.innerWidth < mobileScreenWidth) //手机模式
+      {
+        //经过100vh的高度，top从15vh变为5vh
+        moon?.style.setProperty("top", `${15 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
+        //left从55vw变为5vw
+        moon?.style.setProperty("left", `${55 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 50}vw`);
+        //旋转角度从90deg变为180deg
+        moon?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
+        
+        //经过100vh的高度，top从65vh变为35vh
+        jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
+        //right从5vw变为15vw
+        jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
+        //旋转角度从90deg变为180deg
+        jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
 
-      //经过100vh的高度，top从65vh变为35vh
-      jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
-      //right从5vw变为15vw
-      jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
-      //旋转角度从90deg变为180deg
-      jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
-
+      }
+      else {//pc模式
+        //经过100vh的高度，top从15vh变为5vh
+        moon?.style.setProperty("top", `${15 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
+        //left从25vw变为15vw
+        moon?.style.setProperty("left", `${25 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
+        //旋转角度从90deg变为180deg
+        moon?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.2 })`);
+        
+         //经过100vh的高度，top从65vh变为35vh
+         jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
+         //right从5vw变为15vw
+         jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
+         //旋转角度从90deg变为180deg
+         jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 1 })`);
+ 
+      }
+      
+      
       //从25到35
       sea?.style.setProperty("background-position", `0 ${25 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
 
-      //top从45%到35%
-      slogan?.style.setProperty("top", `${45 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}%`);
+      //top从45%到25%
+      slogan?.style.setProperty("top", `${45 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 20}%`);
       //top从1到0
-      slogan?.style.setProperty("opacity", `${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 1}`);
+      //slogan?.style.setProperty("opacity", `${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 1}`);
     } 
     else {
       sky?.style.setProperty("position", "absolute");

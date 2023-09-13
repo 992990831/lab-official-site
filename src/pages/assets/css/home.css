@@ -84,6 +84,12 @@
     -webkit-animation-iteration-count: infinite; */
 }
 
+@media (min-width: 768px) {
+    .slogan-moon {
+        font-size: 3rem;
+    }
+}
+
 @keyframes slogan_move
 {
     from {top:50%;}
@@ -107,7 +113,7 @@
     width: 20vh;
     background-repeat: no-repeat;
     position: absolute;
-    top: 65vh;
+    top: 75vh;
     right: 5vw;
     /* position: fixed;
     top: 55vh;
