@@ -99,17 +99,19 @@ const IndexPage: React.FC<PageProps> = () => {
 
     const sky = document.getElementById("home_star_sky");
     const moon = document.getElementById("home_moon");
+    const jupiter = document.getElementById("home_jupiter");
     const sea = document.getElementById("home_sand_sea");
     const slogan = document.getElementById("company_slogan");
     // if (scrollTop < window.innerHeight) //
     //   return;
 
     console.log(scrollTop, top, height);
-    if (scrollTop > window.innerHeight) {
+    if (scrollTop > window.innerHeight && scrollTop < window.innerHeight * 2) {
       console.log("fixed");
 
       sky?.style.setProperty("position", "fixed");
       moon?.style.setProperty("position", "fixed");
+      jupiter?.style.setProperty("position", "fixed");
 
       //经过100vh的高度，top从55vh变为15vh
       moon?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 40}vh`);
@@ -126,10 +128,34 @@ const IndexPage: React.FC<PageProps> = () => {
       //top从0到1
       slogan?.style.setProperty("opacity", `${0 + ((scrollTop-window.innerHeight)/window.innerHeight) * 1}`);
     }
+    else if(scrollTop > window.innerHeight * 2) {
+      //经过100vh的高度，top从15vh变为5vh
+      moon?.style.setProperty("top", `${15 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
+      //left从55vw变为5vw
+      moon?.style.setProperty("left", `${55 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 50}vw`);
+      //旋转角度从90deg变为180deg
+      moon?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
+
+      //经过100vh的高度，top从65vh变为35vh
+      jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
+      //right从5vw变为15vw
+      jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
+      //旋转角度从90deg变为180deg
+      jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
+
+      //从25到35
+      sea?.style.setProperty("background-position", `0 ${25 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
+
+      //top从45%到35%
+      slogan?.style.setProperty("top", `${45 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}%`);
+      //top从1到0
+      slogan?.style.setProperty("opacity", `${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 1}`);
+    } 
     else {
       sky?.style.setProperty("position", "absolute");
       moon?.style.setProperty("position", "absolute");
       sea?.style.setProperty("position", "absolute");
+      jupiter?.style.setProperty("position", "absolute");
     }
   }
 
@@ -163,14 +189,15 @@ const IndexPage: React.FC<PageProps> = () => {
       </div>
       <div id="moon_page">
         <div id="home_star_sky" className="home_star_sky">
-
         </div>
         <div id="home_moon" className="home_moon">
-
+        </div>
+        <div id="home_jupiter" className="home_jupiter">
         </div>
         <div id="home_sand_sea" className="home_sand_sea">
             <p id="company_slogan" className="slogan-moon">我们的征途，是星辰大海</p>
         </div>
+        
       </div>
       
       {/* <a id="banner-scroll-down" className="scroll-down" title="scroll down to first section" aria-label="scroll down to first section" data-module-dynamic="scroll-to" href="#section-d9949bb5-56a2-4cc1-87c9-014e3add43d3">
