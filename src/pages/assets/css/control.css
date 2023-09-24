@@ -1,0 +1,22 @@
+.top-banner-control {
+    height: 100vh;
+    background-image: url("../../../images/control/53109792864_9bae60fbf9_h.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+@media screen and (max-width: 900px) {
+    .top-banner-control {
+        height: 100vh;
+        background-image: url("../../../images/control/53109792864_9bae60fbf9_h.webp");
+        background-position: bottom;
+        background-size: cover;
+    }
+}
+
+.control-page-2 {
+    height: 100vh;
+    background-image: url("../../../images/control/F9_4.webp");
+    background-position: bottom;
+    background-size: cover;
+}

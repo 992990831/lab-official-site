@@ -1,0 +1,20 @@
+.about-page-1 {
+    height: 100vh;
+    background-image: url("../../../images/about/F9_5.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+.about-page-2 {
+    height: 100vh;
+    background-image: url("../../../images/about/FH_1.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+.about-page-3 {
+    height: 100vh;
+    background-image: url("../../../images/about/53157800082_f2934e8b29_h.webp");
+    background-position: bottom;
+    background-size: cover;
+}

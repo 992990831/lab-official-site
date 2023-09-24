@@ -3,243 +3,75 @@ import type { HeadFC, PageProps } from "gatsby"
 import Header from "../components/header";
 
 import './assets/css/bootstrap.css';
-import './assets/css/header.css';
-import './assets/css/heartbeat.css';
-import './assets/css/scrolldown.css';
+//import './assets/css/header.css';
+//import './assets/css/heartbeat.css';
+//import './assets/css/scrolldown.css';
 import './assets/css/burger-menu.css';
 import './assets/css/home.css';
 
 const mobileScreenWidth = 768;
 
 const IndexPage: React.FC<PageProps> = () => {
-  const heartBeat = React.useRef<SVGSVGElement>(null);
-  const heartBeatContainer = React.useRef<HTMLDivElement>(null);
-  const [randomTop, setRandomTop] = React.useState(30);
-  const [randomLeft, setRandomLeft] = React.useState(30);
-
-  const [isRunning, setIsRunning] = React.useState(false);
-
-  const [showLength, setShowLength] = React.useState(150);
-  const [hideLength, setHideLength] = React.useState(0);
-
-  const setRandowmHeartBeat = () => {
-    let min=20; 
-    let max=80;  
-    let random = Math.floor(Math.random() * (+max - +min)) + +min; 
-    setRandomTop(random);
-
-    let leftMin=15;
-    let leftMax=60;
-    let randomLeft = Math.floor(Math.random() * (leftMax - leftMin)) + min;
-    setRandomLeft(randomLeft);
-
-    heartBeatContainer.current?.style.setProperty("margin-left", `${randomLeft}vw`);
-  }
-
-  const initHeartBeat = () => {
-    setShowLength(150);
-    setHideLength(0);
-  }
-
-  const showHeartBeatFun = ()=>{
-    setTimeout(()=>{
-      heartBeat.current?.setAttribute("viewBox", `-${showLength} 0 150 75`);
-      heartBeat.current?.style.setProperty("margin-left", `-${showLength}px`);
-      setShowLength(showLength - 1);
-    }, 5);
-  };
-
-  const hideHeartBeatFun = ()=>{
-    setTimeout(()=>{
-      heartBeat.current?.setAttribute("viewBox", `${hideLength} 0 150 75`);
-      heartBeat.current?.style.setProperty("margin-left", `${hideLength}px`);
-      setHideLength(hideLength + 1);
-    }, 5);
-  };
+  const canvasEl:any = React.useRef<HTMLCanvasElement>(null)
+  //const videoEl:any = React.useRef<HTMLVideoElement>(null)
 
   // React.useEffect(()=>{
-  //   if(showLength >= 0)
-  //   {
-  //     if(!isRunning)
-  //     {
-  //       setRandowmHeartBeat();
-  //       setIsRunning(!isRunning);
-  //     }
+  //   // 创建一个虚拟video元素
+  //   const videoEl = document.createElement("video");
+  //   videoEl.src = require('../video/TankerDock_16x9.mp4').default;
+
+  //   // 重要：由于浏览器限制自动播放问题，则需要使用无声播放即可实现自动播放
+  //   videoEl.muted = true; 
+  //   videoEl.autoplay = true;
+  //   videoEl.loop = true;
+  //   videoEl.play();
+  //   //videoEl.current.play();
+
+  //   //debugger;
+  //   const cvsWidth = canvasEl.current.width;
+  //   const cvsHeight = canvasEl.current.height;
+  //   const ctx = canvasEl.current.getContext("2d");
+  //   // 关闭图像平滑处理
+  //   //https://blog.csdn.net/y01269/article/details/131952007
+  //   ctx.imageSmoothingEnabled = false;
+
+
+  //   // 使用requestAnimationFrame定时器实现canvas绘制video每一帧
+  //   const videoRender = () => {
+  //     window.requestAnimationFrame(videoRender);
+  //     ctx.clearRect(0, 0, cvsWidth, cvsHeight);
       
-  //     showHeartBeatFun();
-  //   }
-  //   else if(hideLength < 154)
-  //   {
-  //     hideHeartBeatFun();
-  //   }
-  //   else {
-  //     setTimeout(()=>{
-  //       setRandowmHeartBeat();
-  //       setIsRunning(false);
+  //     ctx.drawImage(videoEl, 0, 0, cvsWidth, cvsHeight);
+  //   };
+  //   videoRender();
 
-  //       initHeartBeat();
-  //     }, 1000);
-  //   }
-  // }, [showLength, hideLength]);
-
-  React.useEffect(()=>{
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll );
-    }
-  }, []);
-
-  const handleScroll = (e: any)=> {
-    handleMoonPage(e.target.scrollingElement.scrollTop);
-  }
-
-  const handleMoonPage = (scrollTop: number) => {
-
-    let section = document.getElementById("moon_page");
-    let top = section?.offsetTop ?? 0; //滚动区域离window顶部的距离
-    let height = section?.offsetHeight ?? 0; //滚动区域的高度
-
-    const sky = document.getElementById("home_star_sky");
-    const moon = document.getElementById("home_moon");
-    const jupiter = document.getElementById("home_jupiter");
-    const sea = document.getElementById("home_sand_sea");
-    const slogan = document.getElementById("company_slogan");
-    // if (scrollTop < window.innerHeight) //
-    //   return;
-
-    console.log(scrollTop, top, height);
-    if (scrollTop > window.innerHeight && scrollTop < window.innerHeight * 2) {
-     
-      sky?.style.setProperty("position", "fixed");
-      moon?.style.setProperty("position", "fixed");
-      jupiter?.style.setProperty("position", "fixed");
-
-      if(window.innerWidth < mobileScreenWidth) //手机模式
-      {
-        //经过100vh的高度，top从55vh变为15vh
-        moon?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 40}vh`);
-        //left从-5vw变为55vw
-        moon?.style.setProperty("left", `${-5 + ((scrollTop-window.innerHeight)/window.innerHeight) * 60}vw`);
-        //旋转角度从-10deg变为90deg
-        moon?.style.setProperty("transform", `rotate(${-10 + ((scrollTop-window.innerHeight)/window.innerHeight) * 100}deg)`);
-      } 
-      else { //pc模式
-        //经过100vh的高度，top从55vh变为15vh
-        moon?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 40}vh`);
-        //left从-5vw变为25vw
-        moon?.style.setProperty("left", `${-5 + ((scrollTop-window.innerHeight)/window.innerHeight) * 30}vw`);
-        //旋转角度从-10deg变为90deg
-        moon?.style.setProperty("transform", `rotate(${-10 + ((scrollTop-window.innerHeight)/window.innerHeight) * 100}deg)`);
-        
-        //经过100vh的高度，top从65vh变为35vh
-        jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
-        //right从5vw变为15vw
-        jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
-        //旋转角度从90deg变为180deg
-        jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
-      }
-      
-
-      
-      sea?.style.setProperty("position", "fixed");
-
-      //top从55%到45%
-      slogan?.style.setProperty("top", `${55 - ((scrollTop-window.innerHeight)/window.innerHeight) * 10}%`);
-      //top从0到1
-      slogan?.style.setProperty("opacity", `${0 + ((scrollTop-window.innerHeight)/window.innerHeight) * 1}`);
-    }
-    else if(scrollTop > window.innerHeight * 2) {
-      if(window.innerWidth < mobileScreenWidth) //手机模式
-      {
-        //经过100vh的高度，top从15vh变为5vh
-        moon?.style.setProperty("top", `${15 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
-        //left从55vw变为5vw
-        moon?.style.setProperty("left", `${55 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 50}vw`);
-        //旋转角度从90deg变为180deg
-        moon?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
-        
-        //经过100vh的高度，top从65vh变为35vh
-        jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
-        //right从5vw变为15vw
-        jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
-        //旋转角度从90deg变为180deg
-        jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.5 })`);
-
-      }
-      else {//pc模式
-        //经过100vh的高度，top从15vh变为5vh
-        moon?.style.setProperty("top", `${15 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
-        //left从25vw变为15vw
-        moon?.style.setProperty("left", `${25 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
-        //旋转角度从90deg变为180deg
-        moon?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 0.2 })`);
-        
-         //经过100vh的高度，top从65vh变为35vh
-         jupiter?.style.setProperty("top", `${65 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 30}vh`);
-         //right从5vw变为15vw
-         jupiter?.style.setProperty("right", `${5 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vw`);
-         //旋转角度从90deg变为180deg
-         jupiter?.style.setProperty("transform", `rotate(${90 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 90}deg) scale(${1 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 1 })`);
- 
-      }
-      
-      
-      //从25到35
-      sea?.style.setProperty("background-position", `0 ${25 + ((scrollTop-window.innerHeight*2)/window.innerHeight) * 10}vh`);
-
-      //top从45%到25%
-      slogan?.style.setProperty("top", `${45 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 20}%`);
-      //top从1到0
-      //slogan?.style.setProperty("opacity", `${1 - ((scrollTop-window.innerHeight*2)/window.innerHeight) * 1}`);
-    } 
-    else {
-      sky?.style.setProperty("position", "absolute");
-      moon?.style.setProperty("position", "absolute");
-      sea?.style.setProperty("position", "absolute");
-      jupiter?.style.setProperty("position", "absolute");
-    }
-  }
-
-  const onMenuClick = (event: any) => {
-    event.preventDefault();
-  }
-
+  // }, []);
+  
   return (
     <>
       <Header></Header>
       <div className="top-banner">
-        <p className="slogan">借助AI之力</p>
-        <p className="slogan">探索大脑的秘密</p>
-          {/* <div className="heart-rate" ref={heartBeatContainer}>
-            <svg ref={heartBeat} style={{marginTop:`${randomTop}vh`, marginLeft: "150px"}} x="0px" y="0px" width="150px" height="73px" viewBox="150 0 150 73" enable-background="new 0 0 150 73">
-              <defs>
-                <filter id="dropGlow" width="1.5" height="1.5" x="-.25" y="-.25">
-                    <feGaussianBlur id="feGaussianBlur5384" in="SourceAlpha" stdDeviation="15.000000" result="blur"/>
-                    <feColorMatrix id="feColorMatrix5386" result="bluralpha" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 0.800000 0 "/>
-                    <feOffset id="feOffset5388" in="bluralpha" dx="0.000000" dy="0.000000" result="offsetBlur"/>
-                    <feMerge id="feMerge5390">
-                        <feMergeNode id="feMergeNode5392" in="offsetBlur"/>
-                        <feMergeNode id="feMergeNode5394" in="SourceGraphic"/>
-                    </feMerge>
-                </filter>
-              </defs>
-              <polyline fill="none" stroke="#FBFEFE" stroke-width="2" style={{filter:"url(#dropGlow)"}} points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,30 80.067,53.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
-              />
-            </svg>
-          </div> */}
+        <p className="slogan">超脑愿景：仰望星空，脚踏实地</p>
       </div>
-      <div id="moon_page">
-        <div id="home_star_sky" className="home_star_sky">
-        </div>
-        <div id="home_moon" className="home_moon">
-        </div>
-        <div id="home_jupiter" className="home_jupiter">
-        </div>
-        <div id="home_sand_sea" className="home_sand_sea">
-            <p id="company_slogan" className="slogan-moon">我们的征途，是星辰大海</p>
-        </div>
-        
+      <div className="home-page-2" style={{top:"30vh"}}>
+        <p className="slogan">超脑使命：成为国际领先的深脑科学平台</p>
       </div>
+      <div className="home-page-3">
+        {/* <canvas ref={canvasEl} className="home-video-canvas">
+
+        </canvas> */}
+        <video aria-hidden="true" muted loop autoPlay playsInline style={{height:"100vh", width:"100vw"}}>
+          <source type="video/mp4" src={require('../video/TankerDock_16x9.mp4').default} />
+        </video>
+        <p className="slogan slogan-video">视频：脑科学科普</p>
+      </div>
+      <div className="home-page-4">
+        <p className="slogan">海外大咖语录</p>
+      </div>
+      <div className="home-page-5">
+        <p className="slogan">动图：大脑vs宇宙</p>
+      </div>
+      {/* <video ref={videoEl} muted autoPlay loop src={require('../video/TankerDock_16x9.mp4').default}></video> */}
       
       {/* <a id="banner-scroll-down" className="scroll-down" title="scroll down to first section" aria-label="scroll down to first section" data-module-dynamic="scroll-to" href="#section-d9949bb5-56a2-4cc1-87c9-014e3add43d3">
         
@@ -251,4 +83,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Alpha Brain Lab</title>
+export const Head: HeadFC = () => <title>Super Brain Nova</title>

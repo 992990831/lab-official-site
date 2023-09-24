@@ -1,0 +1,13 @@
+.top-banner-research {
+    height: 100vh;
+    background-image: url("../../../images/research/STARSHIP_Testflight_DESKTOP_2b3bea613a.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+.research-page-2 {
+    height: 100vh;
+    background-image: url("../../../images/research/51668939779_244723658c_h.webp");
+    background-position: bottom;
+    background-size: cover;
+}

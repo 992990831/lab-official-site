@@ -1,0 +1,22 @@
+.top-banner-atlas {
+    height: 100vh;
+    background-image: url("../../../images/atlas/44451125454_0a3b96df51_h.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+@media screen and (max-width: 900px) {
+    .top-banner-atlas {
+        height: 100vh;
+        background-image: url("../../../images/atlas/44451125454_0a3b96df51_h.webp");
+        background-position: bottom;
+        background-size: cover;
+    }
+}
+
+.atlas-page-2 {
+    height: 100vh;
+    background-image: url("../../../images/atlas/52260973559_1e7ce6598b_h.webp");
+    background-position: bottom;
+    background-size: cover;
+}

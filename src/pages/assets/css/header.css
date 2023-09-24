@@ -5695,62 +5695,16 @@ h4 {
 
 
 .top-banner {
-    margin-top: -20px;
     height: 100vh;
-    background-image: url("../../../images/sky_rocket_desktop.webp");
+    background-image: url("../../../images/F9_3.webp");
     background-position: bottom;
     background-size: cover;
 }
 
 @media screen and (max-width: 900px) {
     .top-banner {
-        margin-top: -20px;
         height: 100vh;
-        background-image: url("../../../images/sky_rocket_mobile.webp");
-        background-position: bottom;
-        background-size: cover;
-    }
-}
-
-.top-banner-research {
-    margin-top: -20px;
-    height: 100vh;
-    background-image: url("../../../images/artificial-intelligence-deep-learning-neural-networks-ai-1-removebg - Copy.webp");
-    background-position: bottom;
-    background-size: cover;
-}
-
-.top-banner-atlas {
-    margin-top: -20px;
-    height: 100vh;
-    background-image: url("../../../images/research_desktop.webp");
-    background-position: bottom;
-    background-size: cover;
-}
-
-@media screen and (max-width: 900px) {
-    .top-banner-atlas {
-        margin-top: -20px;
-        height: 100vh;
-        background-image: url("../../../images/research_mobile.webp");
-        background-position: bottom;
-        background-size: cover;
-    }
-}
-
-.top-banner-control {
-    margin-top: -20px;
-    height: 100vh;
-    background-image: url("../../../images/star_sky_desktop.webp");
-    background-position: bottom;
-    background-size: cover;
-}
-
-@media screen and (max-width: 900px) {
-    .top-banner-control {
-        margin-top: -20px;
-        height: 100vh;
-        background-image: url("../../../images/star_sky_mobile.webp");
+        background-image: url("../../../images/F9_3.webp");
         background-position: bottom;
         background-size: cover;
     }
@@ -5765,4 +5719,15 @@ h4 {
     margin-bottom: 0px;
     line-height: 2rem;
     padding-left: 5vw;
+    margin-top: 0px !important;
+}
+
+.slogan-video {
+    top: -50vh;
+} 
+
+@media screen and (max-width: 900px) {
+    .slogan-video {
+        top: 40vh;
+    }
 }

@@ -136,3 +136,43 @@
     height: 300vh;
     width: 100vw;
 }
+
+.home-page-2 {
+    height: 100vh;
+    background-image: url("../../../images/home/careers_inspiration.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+.home-page-3 {
+    height: 100vh;
+    background-image: none;
+}
+
+@media screen and (max-width: 900px) {
+    .home-page-3 {
+        height: 100vh;
+        background-image: url("../../../images/home/F9_1.webp");
+        background-position: bottom;
+        background-size: cover;
+    }
+}
+
+.home-page-4 {
+    height: 100vh;
+    background-image: url("../../../images/home/Merlin.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+.home-page-5 {
+    height: 100vh;
+    background-image: url("../../../images/home/f9_feature.webp");
+    background-position: bottom;
+    background-size: cover;
+}
+
+.home-video-canvas {
+    width: 100vw;
+    height: 100vh;
+}
