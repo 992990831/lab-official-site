@@ -3184,7 +3184,7 @@ body.isDesktop #menu-navigation a:hover {
     top: 0;
     width: 100vw;
     height: 65px;
-    background-color: rgb(35, 82, 222); 
+    background-color: lightslategray; 
     opacity: 0.9;
 }
 

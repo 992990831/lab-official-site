@@ -18,28 +18,30 @@ const Header = () => {
                 <div id="navigation">
                     <div className="nav-links">
                         <div>
-                        <p>&nbsp;</p> 
-                        <Link className="nav-item" to="/"> 首页  </Link>
+                            <Link className="nav-item" to="/"> 首页  </Link>
+                            <p>&nbsp;</p> 
                         </div>
                         <div>
-                            <p>「N3行星」</p>    
+                            
                             <Link className="nav-item" to="/research">
                                 脑科研平台
                             </Link>
+                            <p>「N3行星」</p>    
                         </div>
                         <div>
-                            <p>「IC1101星系」</p>  
                             <Link className="nav-item" to="/atlas">
                             脑图谱平台                            
                             </Link>
+                            <p>「IC1101星系」</p>  
                         </div>
                         <div>
-                            <p>「B1919脉冲星」</p>  
                             <Link className="nav-item" to="/control">脑调控平台</Link>
+                            <p>「B1919脉冲星」</p>  
                         </div>
                         <div>
-                        <p>&nbsp;</p> 
-                        <Link className="nav-item" to="/about">我们</Link>
+                        
+                            <Link className="nav-item" to="/about">我们</Link>
+                            <p>&nbsp;</p> 
                         </div>
                         
                         {/* <li className="nav-item"><a href="/">首页</a></li>
@@ -63,6 +65,8 @@ const Header = () => {
                     <a id="about" className="menu-item" href="/about">我们</a> */}
 
                     <a id="home" href="/">超脑荣誉</a>
+                    <a id="home" href="/">培训课程</a>
+                    <a id="home" href="/">临床招募</a>
                     <a id="about" bm-cross-button href="/about">加入超脑</a>
                     {/* <a id="contact" className="menu-item" href="/contact">Contact</a>
             <a onClick={ onMenuClick } className="menu-item--small" href="">Settings</a> */}
