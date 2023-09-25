@@ -3184,7 +3184,7 @@ body.isDesktop #menu-navigation a:hover {
     top: 0;
     width: 100vw;
     height: 65px;
-    background-color: black;
+    background-color: rgb(35, 82, 222); 
     opacity: 0.9;
 }
 
@@ -3296,7 +3296,8 @@ body.isDesktop #menu-navigation a:hover {
 
 .nav-links {
     position: relative;
-    list-style-type: none;
+    display: flex;
+    /* list-style-type: none; */
     margin: 0;
     padding: 0
 }
@@ -3354,6 +3355,18 @@ body.isDesktop #menu-navigation a:hover {
     transform-origin: left center
 }
 
+#navigation .nav-links div {
+    margin-left: 25px;
+    text-align: center;
+}
+
+#navigation .nav-links p {
+    margin: 0px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 0.5;
+}
+
 #navigation .nav-links a {
     position: relative;
     font: 14px/28px D-DIN-Bold, Arial, Verdana, sans-serif;
@@ -3364,7 +3377,7 @@ body.isDesktop #menu-navigation a:hover {
     text-transform: uppercase;
     -webkit-transition: color .25s ease;
     transition: color .25s ease;
-    margin-left: 25px;
+    /* margin-left: 25px; */
     font-weight: bold;
 }
 
