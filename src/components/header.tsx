@@ -65,7 +65,7 @@ const Header = () => {
                     <a id="about" className="menu-item" href="/about">我们</a> */}
 
                     <a id="home" href="/">超脑荣誉</a>
-                    <a id="home" href="/">培训课程</a>
+                    <a id="home" href="/training">培训课程</a>
                     <a id="home" href="/">临床招募</a>
                     <a id="about" bm-cross-button href="/about">加入超脑</a>
                     {/* <a id="contact" className="menu-item" href="/contact">Contact</a>
