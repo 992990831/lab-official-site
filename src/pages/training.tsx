@@ -34,8 +34,13 @@ const TrainingApplication: React.FC<PageProps> = () => {
     const onFinish = (values: any) => {
         setCanSubmit(false);
         setSpinning(true);
+        
+        let env = process.env.NODE_ENV;
+        let url = process.env.REACT_APP_BASE_URL;
 
-        webRequest.post('https://localhost:7162/TrainingApplication/add',
+        debugger;
+        //webRequest.post('https://localhost:5001/TrainingApplication/add',
+        webRequest.post(`https://${url}/TrainingApplication/add`,
             { name: values.user.name, email: values.user.email, mobile: values.user.mobile, wechat: values.user.wechat, comment: values.user.comment }).then(() => {
                 messageApi.info('申请提交成功');
             }).catch((reason) => {
